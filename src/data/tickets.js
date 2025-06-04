@@ -1,0 +1,55 @@
+const tickets = [
+  {
+    id: "1",
+    name: "Alice Johnson",
+    email: "alice@example.com",
+    subject: "Login not working",
+    description:
+      "I can't log into my account even after resetting my password.",
+    status: "open",
+    priority: "high",
+    createdAt: "2025-06-01T10:15:00Z",
+  },
+  {
+    id: "2",
+    name: "Bob Smith",
+    email: "bob@example.com",
+    subject: "Billing issue",
+    description: "I was charged twice for my subscription this month.",
+    status: "in-progress",
+    priority: "medium",
+    createdAt: "2025-06-02T14:30:00Z",
+  },
+  {
+    id: "3",
+    name: "Cindy Lee",
+    email: "cindy@example.com",
+    subject: "Feature request",
+    description: "Can you add dark mode to the platform?",
+    status: "closed",
+    priority: "low",
+    createdAt: "2025-06-03T09:45:00Z",
+  },
+  {
+    id: "4",
+    name: "David Kim",
+    email: "david@example.com",
+    subject: "App crashing",
+    description: "The mobile app crashes every time I try to upload a file.",
+    status: "open",
+    priority: "high",
+    createdAt: "2025-06-01T16:20:00Z",
+  },
+  {
+    id: "5",
+    name: "Emily Davis",
+    email: "emily@example.com",
+    subject: "Change email address",
+    description: "I need to update the email associated with my account.",
+    status: "in-progress",
+    priority: "low",
+    createdAt: "2025-06-02T11:10:00Z",
+  },
+];
+
+export default tickets;
