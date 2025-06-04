@@ -1,6 +1,8 @@
 import { useState } from "react"
+import { useSupportTicketContext } from "../context/TicketContext"
 
-export default function TicketForm({ setTicketList }) {
+export default function TicketForm() {
+  const {setTicketList} = useSupportTicketContext()
   const [formData, setFormData] = useState({
     userName: "",
     email: "",
@@ -26,9 +28,17 @@ export default function TicketForm({ setTicketList }) {
         ...prevTicketList,
         {
           ...formData,
-          id
+          id,
+          status: 'open'
         }
       ]
+    })
+    setFormData({
+      userName: "",
+      email: "",
+      subject: "",
+      description: "",
+      priority: "low"
     })
   }
 
@@ -38,7 +48,7 @@ export default function TicketForm({ setTicketList }) {
         name="userName"
         type="text" 
         placeholder="name"
-        value={formData.name}
+        value={formData.userName}
         onChange={handleFormChange}
       />  
       <input 
