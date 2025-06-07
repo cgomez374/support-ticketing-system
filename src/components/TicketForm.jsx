@@ -43,7 +43,7 @@ export default function TicketForm() {
   }
 
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form className="col-center" onSubmit={handleFormSubmit}>
       <input 
         name="userName"
         type="text" 

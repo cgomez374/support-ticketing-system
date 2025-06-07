@@ -11,6 +11,10 @@ export const useSupportTicketContext = () => useContext(SupportTicketContext)
 export function SupportTicketProvider({children}){
   const [ticketList, setTicketList] = useState([...tickets])
 
+  function filterTicketList(filter){
+    
+  }
+
   return (
     <SupportTicketContext.Provider value={{ ticketList, setTicketList }}>
       { children }
