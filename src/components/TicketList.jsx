@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { useState } from "react"
 import { useSupportTicketContext } from "../context/TicketContext"
 import FilterControls from "./FilterControls"
@@ -56,6 +57,12 @@ export default function TicketList(){
               <p><b>email:</b> { ticket.email }</p>
               <p><b>status:</b> { ticket.status }</p>
               <p><b>priority:</b> { ticket.priority }</p>
+              <Link 
+                to={ `/ticket/${ticket.id}` }  
+                state={ticket}
+              >
+                view
+              </Link>
             </li>
           ))
         }
