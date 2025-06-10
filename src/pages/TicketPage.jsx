@@ -4,7 +4,7 @@ export default function TicketPage(){
   const location = useLocation()
   const { id, name, email, subject, description, status, priority, createdAt } = location.state
   return (
-    <section>
+    <section className="ticket-details">
       <h1>Ticket #{id}</h1>
       <p>name: {name}</p>
       <p>email: {email}</p>

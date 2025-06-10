@@ -10,7 +10,7 @@ export default function Navbar(){
           ? <Link to="/login">login</Link>
           : currentUser.role === 'admin' 
             ? <Link to="/admin">Dashboard</Link>
-            : <Link to="/">User - submit ticket</Link>
+            : <Link to="/">submit ticket</Link>
       }
     </nav>
     
