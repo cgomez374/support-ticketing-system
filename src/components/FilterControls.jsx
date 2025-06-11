@@ -1,4 +1,31 @@
-export default function FilterControls({ filters, setFilter }){
+export default function FilterControls({ statusFilter, priorityFilter, setPriorityFilter, setStatusFilter }){
+  const filters = [
+    {
+      name: 'status',
+      value: statusFilter,
+      options: [
+        { value: 'all', label: 'all statuses' },
+        { value: 'open', label: 'open' },
+        { value: 'in-progress', label: 'in-progress' },
+        { value: 'closed', label: 'closed' },
+      ]
+    },
+    {
+      name: 'priority',
+      value: priorityFilter,
+      options: [
+        { value: 'all', label: 'all priorities' },
+        { value: 'high', label: 'high' },
+        { value: 'medium', label: 'medium' },
+        { value: 'low', label: 'low' },
+      ]
+    }
+  ]
+
+  function setFilter(name, value){
+    if(name === "status") setStatusFilter(value)
+    if(name === "priority") setPriorityFilter(value)
+  }
   return (
     <div className="">
       {

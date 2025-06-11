@@ -1,6 +1,6 @@
 import TicketForm from "../components/TicketForm";
 
-export default function Home(){
+export default function SubmitTicket(){
   return (
     <section>
       <h1>Submit a Ticket</h1>

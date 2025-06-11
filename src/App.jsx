@@ -5,10 +5,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { SupportTicketProvider } from './context/TicketContext'
 import { AuthProvider } from './context/AuthContext'
 // PAGES
-import Home from './pages/Home'
+import SubmitTicket from './pages/SubmitTicket'
 import AdminDashboard from './pages/AdminDashboard'
 import TicketPage from './pages/TicketPage'
 import LoginPage from './pages/LoginPage'
+import UserDashboard from './pages/UserDashboard'
 // COMPONENTS
 import Navbar from './components/Navbar'
 import ProtectedRoutes from './components/ProtectedRoutes'
@@ -23,9 +24,10 @@ function App() {
             <Navbar />
             <Routes>
               <Route element={<ProtectedRoutes />}>
-                <Route path="/" element={ <Home /> } />
+                <Route path="/" element={ <UserDashboard /> } />
                 <Route path="/admin" element={ <AdminDashboard /> } />
                 <Route path="/ticket/:id" element={ <TicketPage /> } />
+                <Route path='/submit-ticket' element={<SubmitTicket />} />
               </Route>
               <Route path='/login' element={<LoginPage />} />
             </Routes>

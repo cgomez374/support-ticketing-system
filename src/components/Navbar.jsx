@@ -10,7 +10,10 @@ export default function Navbar(){
           ? <Link to="/login">login</Link>
           : currentUser.role === 'admin' 
             ? <Link to="/admin">Dashboard</Link>
-            : <Link to="/">submit ticket</Link>
+            : <>
+              <Link to="/submit-ticket">submit ticket</Link> 
+              <Link to="/">User Dashboard</Link> 
+            </>
       }
       {
         loginStatus && <Link to="/" onClick={logout}>Logout</Link>
