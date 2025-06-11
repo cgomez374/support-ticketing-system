@@ -7,14 +7,23 @@ const AuthContext = createContext()
 export const useAuthContext = () => useContext(AuthContext)
 
 export function AuthProvider({children}) {
-  const [loginStatus, setLoginStatus] = useState(false)
-  const [currentUser, setCurrentUser] = useState(null)
+  const loginInfo = JSON.parse(localStorage.getItem("loginInfo"))
+  const [loginStatus, setLoginStatus] = useState(
+    loginInfo ? loginInfo.loginStatus : false
+  )
+  const [currentUser, setCurrentUser] = useState(
+    loginInfo ? loginInfo.currentUser : null
+  )
 
   function login(username, password){
     users.forEach(user => {
       if(user.username === username && user.password === password){
         setLoginStatus(true)
         setCurrentUser(user)
+        localStorage.setItem("loginInfo", JSON.stringify({
+          loginStatus: true,
+          currentUser: user
+        }))
       }
     })
   }
@@ -22,6 +31,10 @@ export function AuthProvider({children}) {
   function logout(){
     setCurrentUser(null)
     setLoginStatus(false)
+    localStorage.setItem("loginInfo", JSON.stringify({
+      loginStatus: false,
+      currentUser: null
+    }))
   }
   return (
     <AuthContext.Provider value={{ loginStatus, currentUser, login, logout }}>

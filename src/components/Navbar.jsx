@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useAuthContext } from "../context/AuthContext"
 
 export default function Navbar(){
-  const {loginStatus, currentUser} = useAuthContext()
+  const {loginStatus, currentUser, logout} = useAuthContext()
   return (
     <nav className="row-center">
       {
@@ -11,6 +11,9 @@ export default function Navbar(){
           : currentUser.role === 'admin' 
             ? <Link to="/admin">Dashboard</Link>
             : <Link to="/">submit ticket</Link>
+      }
+      {
+        loginStatus && <Link to="/" onClick={logout}>Logout</Link>
       }
     </nav>
     
