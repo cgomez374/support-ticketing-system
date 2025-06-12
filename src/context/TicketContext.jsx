@@ -9,14 +9,30 @@ export const useSupportTicketContext = () => useContext(SupportTicketContext)
 
 // PROVIDER
 export function SupportTicketProvider({children}){
-  const [ticketList, setTicketList] = useState([...tickets])
+  const [ticketList, setTicketList] = useState([
+    ...JSON.parse(localStorage.getItem("tickets")) 
+      ?  JSON.parse(localStorage.getItem("tickets"))
+      : tickets
+  ])
 
-  function filterTicketList(filter){
-    
+  function addNewTicket(newTicket){
+    setTicketList(prevTicketList => {
+      const newTicketList = [
+        ...prevTicketList,
+        {
+          ...newTicket,
+          id: crypto.randomUUID(),
+          status: 'open',
+          createdAt: new Date().toLocaleString()
+        }
+      ]
+      localStorage.setItem("tickets", JSON.stringify(newTicketList))
+      return newTicketList
+    })
   }
 
   return (
-    <SupportTicketContext.Provider value={{ ticketList, setTicketList }}>
+    <SupportTicketContext.Provider value={{ ticketList, setTicketList, addNewTicket }}>
       { children }
     </SupportTicketContext.Provider>
   )

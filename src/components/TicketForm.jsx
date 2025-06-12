@@ -1,14 +1,21 @@
 import { useState } from "react"
 import { useSupportTicketContext } from "../context/TicketContext"
+import { useAuthContext } from "../context/AuthContext"
 
 export default function TicketForm() {
-  const {setTicketList} = useSupportTicketContext()
+  const { currentUser } = useAuthContext()
+  const { addNewTicket } = useSupportTicketContext()
+  
   const [formData, setFormData] = useState({
-    userName: "",
-    email: "",
-    subject: "",
+    title: "",
     description: "",
-    priority: "low"
+    status: "",
+    priority: "low",
+    username: currentUser.username,
+    fullName: currentUser.fullName,
+    email: currentUser.email,
+    userId: currentUser.id,
+    createdAt: ""
   })
 
   function handleFormChange(e){
@@ -22,33 +29,26 @@ export default function TicketForm() {
 
   function handleFormSubmit(e){
     e.preventDefault()
-    const id = crypto.randomUUID()
-    setTicketList(prevTicketList => {
-      return [
-        ...prevTicketList,
-        {
-          ...formData,
-          id,
-          status: 'open'
-        }
-      ]
-    })
-    setFormData({
-      userName: "",
-      email: "",
-      subject: "",
-      description: "",
-      priority: "low"
+    addNewTicket(formData) 
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData,
+        title: "",
+        description: "",
+        status: "",
+        priority: "low",
+        createdAt: ""
+      }
     })
   }
 
   return (
     <form className="col-center" onSubmit={handleFormSubmit}>
       <input 
-        name="userName"
+        name="fullName"
         type="text" 
         placeholder="name"
-        value={formData.userName}
+        value={formData.fullName}
         onChange={handleFormChange}
       />  
       <input 
@@ -59,10 +59,10 @@ export default function TicketForm() {
         onChange={handleFormChange}
       />
       <input 
-        name="subject"
+        name="title"
         type="text" 
-        placeholder="subject"
-        value={formData.subject}
+        placeholder="title"
+        value={formData.title}
         onChange={handleFormChange}
       />
       <textarea 
