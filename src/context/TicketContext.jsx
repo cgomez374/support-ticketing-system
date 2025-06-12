@@ -31,6 +31,10 @@ export function SupportTicketProvider({children}){
     })
   }
 
+  function updateTicket(){
+    
+  }
+
   return (
     <SupportTicketContext.Provider value={{ ticketList, setTicketList, addNewTicket }}>
       { children }

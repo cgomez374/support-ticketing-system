@@ -5,11 +5,13 @@ const tickets = [
     description: "User cannot log in using correct credentials.",
     status: "open",
     priority: "high",
-    username: "jessica.miller",
-    fullName: "Jessica Miller",
-    email: "jessica.miller@example.com",
-    userId: "315aad54-5c72-4196-9844-3db947b8b577",
-    createdAt: "06-10-2025"
+    username: "michael.thompson",
+    fullName: "Michael Thompson",
+    email: "michael.thompson@example.com",
+    userId: "07e09557-8ddf-4e6e-bf01-1910e22968fc",
+    createdAt: "06-10-2025",
+    adminId: "",
+    notes: [],
   },
   {
     id: "2c3f5b84-f94f-4b39-89c0-39b5a3c99c0e",
@@ -21,7 +23,9 @@ const tickets = [
     fullName: "Michael Thompson",
     email: "michael.thompson@example.com",
     userId: "07e09557-8ddf-4e6e-bf01-1910e22968fc",
-    createdAt: "06-10-2025"
+    createdAt: "06-10-2025",
+    adminId: "4a68cb0c-826e-4d1f-b2e9-84b5cfded59e",
+    notes: ["researching ticket"],
   },
   {
     id: "648f122a-4572-4d7c-917e-7c6d9d12cf52",
@@ -33,7 +37,9 @@ const tickets = [
     fullName: "Sarah Lee",
     email: "sarah.lee@example.com",
     userId: "f97cc8fc-7f09-4b49-a6d2-e1760866f9d3",
-    createdAt: "06-10-2025"
+    createdAt: "06-10-2025",
+    adminId: "315aad54-5c72-4196-9844-3db947b8b577",
+    notes: ["researching ticket", "found issue, contacting user now"],
   },
   {
     id: "5a1e52fb-bb98-4e30-9c14-7502b9f16659",
@@ -41,11 +47,13 @@ const tickets = [
     description: "The 'Contact Us' page link is broken.",
     status: "open",
     priority: "low",
-    username: "admin.tony",
-    fullName: "Tony Rivera",
-    email: "admin.tony@example.com",
-    userId: "4a68cb0c-826e-4d1f-b2e9-84b5cfded59e",
-    createdAt: "06-10-2025"
+    username: "luis.garcia",
+    fullName: "Luis Garcia",
+    email: "luis.garcia@example.com",
+    userId: "621f72e3-1778-4fcb-948f-418448244f25",
+    createdAt: "06-10-2025",
+    adminId: "",
+    notes: [],
   },
   {
     id: "f4bc0f74-70e3-4ae5-bd2c-c9e40f50df3b",
@@ -57,7 +65,9 @@ const tickets = [
     fullName: "Luis Garcia",
     email: "luis.garcia@example.com",
     userId: "621f72e3-1778-4fcb-948f-418448244f25",
-    createdAt: "06-10-2025"
+    createdAt: "06-10-2025",
+    adminId: "315aad54-5c72-4196-9844-3db947b8b577",
+    notes: ["researching ticket"],
   },
 ];
 

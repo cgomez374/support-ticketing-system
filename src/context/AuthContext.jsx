@@ -36,8 +36,12 @@ export function AuthProvider({children}) {
       currentUser: null
     }))
   }
+
+  function getUserInfo(id){
+    return users.find(user => user.id === id)
+  }
   return (
-    <AuthContext.Provider value={{ loginStatus, currentUser, login, logout }}>
+    <AuthContext.Provider value={{ loginStatus, currentUser, login, logout, getUserInfo }}>
       {children}
     </AuthContext.Provider>
   )
