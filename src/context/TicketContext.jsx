@@ -15,6 +15,10 @@ export function SupportTicketProvider({children}){
       : tickets
   ])
 
+  function findTicket(id){
+    return ticketList.find(ticket => ticket.id === id)
+  }
+
   function addNewTicket(newTicket){
     setTicketList(prevTicketList => {
       const newTicketList = [
@@ -31,12 +35,19 @@ export function SupportTicketProvider({children}){
     })
   }
 
-  function updateTicket(){
-    
+  function updateTicketList(updatedTicket){
+    setTicketList(prevTicketList => {
+      const newTicketList = prevTicketList.map(ticket => ticket.id === updatedTicket.id 
+        ? updatedTicket 
+        : ticket)
+      console.log(newTicketList)
+      localStorage.setItem("tickets", JSON.stringify(newTicketList))
+      return newTicketList
+    })
   }
 
   return (
-    <SupportTicketContext.Provider value={{ ticketList, setTicketList, addNewTicket }}>
+    <SupportTicketContext.Provider value={{ ticketList, setTicketList, addNewTicket, updateTicketList, findTicket }}>
       { children }
     </SupportTicketContext.Provider>
   )

@@ -1,12 +1,15 @@
 import { useLocation } from "react-router-dom"
 import { useAuthContext } from "../context/AuthContext"
+import { useSupportTicketContext } from "../context/TicketContext"
+import { useState } from "react"
 
 export default function TicketPage(){
   const location = useLocation()
   const { getUserInfo, currentUser } = useAuthContext()
+  const { updateTicketList, findTicket } = useSupportTicketContext()
+  const [textAreaValue, setTextAreaValue]  = useState("")
 
-
-  // NEED TO FINISH UPDATE TICKET FUNCTION TO UPDATE ASSINGED TO AND COMMENTS!!!!
+  const ticket = findTicket(location.state?.id)
 
   const { 
     id, 
@@ -19,12 +22,41 @@ export default function TicketPage(){
     createdAt,
     adminId,
     notes
-    } = location.state
+    } = ticket
 
   const admin = getUserInfo(adminId)
 
-  function handleClick(e){
+  function handleTextAreaChange(e){
+    setTextAreaValue(e.target.value)
+  }
+
+  function assignTicketToAdmin(e){
     e.preventDefault()
+    updateTicketList({
+      ...ticket,
+      adminId: currentUser.id,
+      status: "in-progress"
+    })
+  }
+
+  function closeTicket(e){
+    e.preventDefault()
+    updateTicketList({
+      ...ticket,
+      status: "closed"
+    })
+  }
+
+  function updateTicketComments(e){
+    e.preventDefault()
+    updateTicketList({
+      ...ticket,
+      notes: [
+        ...notes,
+        textAreaValue
+      ]
+    })
+    setTextAreaValue("")
   }
 
   return (
@@ -40,22 +72,35 @@ export default function TicketPage(){
       <p>assinged to: { admin ? admin.fullName : "" }</p>
       {
         status !== "open" 
-        ? <div className="">
-        <h3>notes</h3>
-        <ul>
-          {
-            notes.map((note, idx) => (
-              <li key={idx}>-{note}</li>
-            ))
+        ? 
+        <div className="">
+          <h3>notes</h3>
+          <ul>
+            {
+              notes.map((note, idx) => (
+                <li key={idx}>-{note}</li>
+              ))
+            }
+          </ul>
+          {(currentUser.id === adminId && status !== "closed") 
+            &&
+            <div className="">
+              <form onSubmit={updateTicketComments}>
+                <textarea 
+                  name="notes" 
+                  placeholder="Add a new note"
+                  onChange={handleTextAreaChange}
+                  value={textAreaValue}
+                >
+                </textarea>
+                <button type="submit">submit</button>
+              </form>
+              <button onClick={closeTicket}>close ticket</button>
+            </div>
+            
           }
-        </ul>
-        {(currentUser.id === adminId && status !== "closed") && <form action="">
-          <textarea name="notes" placeholder="Add a new note"></textarea>
-          <button type="submit" onClick={handleClick}>submit</button>
-        </form>
-        }
-      </div>
-      : <button onClick={handleClick}>assign to me</button>
+        </div>
+      : <button onClick={assignTicketToAdmin}>assign to me</button>
       }
     </section>
   )
