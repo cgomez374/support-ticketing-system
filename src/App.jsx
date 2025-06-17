@@ -10,6 +10,7 @@ import AdminDashboard from './pages/AdminDashboard'
 import TicketPage from './pages/TicketPage'
 import LoginPage from './pages/LoginPage'
 import UserDashboard from './pages/UserDashboard'
+import AdminTickets from './pages/AdminTickets'
 // COMPONENTS
 import Navbar from './components/Navbar'
 import ProtectedRoutes from './components/ProtectedRoutes'
@@ -26,6 +27,7 @@ function App() {
               <Route element={<ProtectedRoutes />}>
                 <Route path="/" element={ <UserDashboard /> } />
                 <Route path="/admin" element={ <AdminDashboard /> } />
+                <Route path="/admin-tickets" element={ <AdminTickets /> } />
                 <Route path="/ticket/:id" element={ <TicketPage /> } />
                 <Route path='/submit-ticket' element={<SubmitTicket />} />
               </Route>

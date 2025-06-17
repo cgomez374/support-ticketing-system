@@ -12,7 +12,7 @@ export default function Navbar(){
           : currentUser.role === 'admin' 
             ? <>
               <Link to="/admin">Dashboard</Link>
-              {/* <Link>My tickets</Link> */}
+              <Link to="/admin-tickets">Assigned tickets</Link>
             </>
             
             : <>

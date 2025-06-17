@@ -33,11 +33,11 @@ export default function FilterControls({ statusFilter, priorityFilter, setPriori
           <select 
             key={name} 
             name={name} 
-            value={value} 
+            value={value}
             onChange={(e) => setFilter(name, e.target.value)}
           >
             {
-              options.map(({ label, value }) => (
+              options.map(({label, value }) => (
                 <option 
                   key={value} 
                   value={value}

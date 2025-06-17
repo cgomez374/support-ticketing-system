@@ -5,8 +5,10 @@ import TicketList from "../components/TicketList";
 
 export default function AdminDashboard(){
   const { ticketList } = useSupportTicketContext()
-  const [statusFilter, setStatusFilter]= useState('all')
-  const [priorityFilter, setPriorityFilter]= useState('all')
+
+  // TRY WITH LOCALSTORAGE SO FILTERS PERSIST
+  const [statusFilter, setStatusFilter] = useState('all')
+  const [priorityFilter, setPriorityFilter] = useState('all')
 
   const filteredTicketList = ticketList.filter(ticket => {    
       const matchedStatus = statusFilter === 'all' || ticket.status.toLowerCase() === statusFilter.toLowerCase()

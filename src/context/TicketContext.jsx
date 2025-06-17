@@ -46,8 +46,12 @@ export function SupportTicketProvider({children}){
     })
   }
 
+  function ticketsByAdmin(adminId){
+    return ticketList.filter(ticket => ticket.adminId === adminId)
+  }
+
   return (
-    <SupportTicketContext.Provider value={{ ticketList, setTicketList, addNewTicket, updateTicketList, findTicket }}>
+    <SupportTicketContext.Provider value={{ ticketList, setTicketList, addNewTicket, updateTicketList, findTicket, ticketsByAdmin }}>
       { children }
     </SupportTicketContext.Provider>
   )
