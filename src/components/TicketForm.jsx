@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { useSupportTicketContext } from "../context/TicketContext"
 import { useAuthContext } from "../context/AuthContext"
+import { useNavigate } from "react-router-dom"
 
 export default function TicketForm() {
   const { currentUser } = useAuthContext()
   const { addNewTicket } = useSupportTicketContext()
+  const navigate = useNavigate()
   
   const [formData, setFormData] = useState({
     title: "",
@@ -40,6 +42,7 @@ export default function TicketForm() {
         createdAt: ""
       }
     })
+    navigate('/')
   }
 
   return (

@@ -15,7 +15,7 @@ export default function LoginPage(){
 
   return (
     <section>
-      <h1>login</h1>
+      <h1>ResolveIT</h1>
       {
         loginStatus && "Logged In!"
       }

@@ -1,12 +1,26 @@
-# React + Vite
+# Support Ticket Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based support ticket management application that allows users to submit support requests and enables administrators to assign, track, and resolve tickets. Built with React and Context API for efficient state management, it includes a responsive design and intuitive UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Submit tickets with title, description, priority, and status
+- Admin dashboard with filtering by ticket status and priority
+- Ability to assign tickets to administrators
+- Option to close tickets
+- Add internal notes to each ticket
+- Data persistence using localStorage
+- Responsive design optimized for desktop and mobile
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+- Frontend: React, React Router
+- State Management: React Context API
+- Styling: CSS3
+- Persistence: localStorage (for demonstration purposes)
+
+---

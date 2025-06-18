@@ -8,24 +8,30 @@ export default function Navbar(){
       {
         loginStatus && 
         <div className="">Hello, {currentUser.fullName}!</div>
-
       }
       {
         !loginStatus 
-          ? <Link to="/login">login</Link>
+          ? 
+          <div className="">
+            <Link to="/login">login</Link>
+          </div> 
           : currentUser.role === 'admin' 
-            ? <>
+            ? <div className="nav-center">
               <Link to="/admin">Dashboard</Link>
               <Link to="/admin-tickets">Assigned tickets</Link>
-            </>
+            </div>
             
-            : <>
+            : <div className="nav-center">
               <Link to="/">Dashboard</Link> 
-              <Link to="/submit-ticket">submit ticket</Link> 
-            </>
+              <Link to="/submit-ticket">Submit ticket</Link> 
+            </div>
       }
       {
-        loginStatus && <Link to="/" onClick={logout}>Logout</Link>
+        loginStatus && 
+        <div className="nav-end">
+          <Link to="/" onClick={logout}>Logout</Link>
+        </div>
+        
       }
     </nav>
     

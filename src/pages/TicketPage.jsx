@@ -70,11 +70,39 @@ export default function TicketPage(){
       <p>priority: {priority}</p>
       <p>Created at: {createdAt}</p>
       <p>assinged to: { admin ? admin.fullName : "" }</p>
-      {
+      <div className="ticket-notes">
+      <h3>Admin Notes</h3>
+      <div className="note-list">
+        {notes.map((note, idx) => (
+          <div className="note-item" key={idx}>
+            <p>{note}</p>
+          </div>
+        ))}
+      </div>
+
+      {(currentUser.id === adminId && status !== "closed") && (
+        <form className="note-form" onSubmit={updateTicketComments}>
+          <textarea
+            name="notes"
+            placeholder="Write an update for this ticket..."
+            onChange={handleTextAreaChange}
+            value={textAreaValue}
+            rows="4"
+          />
+          <button type="submit">Add Note</button>
+        </form>
+      )}
+
+      {(currentUser.id === adminId && status !== "closed") && (
+        <button className="btn-red" onClick={closeTicket}>Close Ticket</button>
+      )}
+    </div>
+
+      {/* {
         status !== "open" 
         ? 
         <div className="">
-          <h3>notes</h3>
+          <h3>notes:</h3>
           <ul>
             {
               notes.map((note, idx) => (
@@ -95,13 +123,13 @@ export default function TicketPage(){
                 </textarea>
                 <button type="submit">submit</button>
               </form>
-              <button onClick={closeTicket}>close ticket</button>
+              <button className="btn-red" onClick={closeTicket}>close ticket</button>
             </div>
             
           }
         </div>
-      : <button onClick={assignTicketToAdmin}>assign to me</button>
-      }
+      : <button className="btn-red" onClick={assignTicketToAdmin}>assign to me</button>
+      } */}
     </section>
   )
 }
