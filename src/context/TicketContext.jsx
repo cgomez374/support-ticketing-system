@@ -15,6 +15,14 @@ export function SupportTicketProvider({children}){
       : tickets
   ])
 
+  const [statusFilter, setStatusFilter] = useState('all')
+  const [priorityFilter, setPriorityFilter] = useState('all')
+
+  function setFilter(name, value){
+    if(name === "status") setStatusFilter(value)
+    if(name === "priority") setPriorityFilter(value)
+  }
+
   function findTicket(id){
     return ticketList.find(ticket => ticket.id === id)
   }
@@ -51,7 +59,7 @@ export function SupportTicketProvider({children}){
   }
 
   return (
-    <SupportTicketContext.Provider value={{ ticketList, setTicketList, addNewTicket, updateTicketList, findTicket, ticketsByAdmin }}>
+    <SupportTicketContext.Provider value={{ ticketList, setTicketList, addNewTicket, updateTicketList, findTicket, ticketsByAdmin, setFilter, statusFilter, priorityFilter }}>
       { children }
     </SupportTicketContext.Provider>
   )

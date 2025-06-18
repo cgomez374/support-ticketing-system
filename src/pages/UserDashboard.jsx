@@ -5,12 +5,9 @@ import TicketList from "../components/TicketList";
 import FilterControls from "../components/FilterControls";
 
 export default function UserDashboard(){
-  const { ticketList } = useSupportTicketContext()
+  const { ticketList, statusFilter, priorityFilter } = useSupportTicketContext()
   const { currentUser } = useAuthContext()
 
-  const [statusFilter, setStatusFilter]= useState('all')
-  const [priorityFilter, setPriorityFilter]= useState('all')
-  
   const userTicketList = ticketList.filter(ticket => 
     ticket.userId === currentUser.id
   )
@@ -22,13 +19,8 @@ export default function UserDashboard(){
   })
   return (
     <section className="col-center">
-      <h1>User Dashboard</h1>
-      <FilterControls 
-        statusFilter={statusFilter}
-        priorityFilter={priorityFilter}
-        setPriorityFilter={setPriorityFilter}
-        setStatusFilter={setStatusFilter}
-      />
+      <h1>Dashboard</h1>
+      <FilterControls />
       <TicketList filteredTicketList={filteredTicketList} />
     </section>
   )

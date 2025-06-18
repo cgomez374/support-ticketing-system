@@ -4,11 +4,7 @@ import FilterControls from "../components/FilterControls"
 import TicketList from "../components/TicketList";
 
 export default function AdminDashboard(){
-  const { ticketList } = useSupportTicketContext()
-
-  // TRY WITH LOCALSTORAGE SO FILTERS PERSIST
-  const [statusFilter, setStatusFilter] = useState('all')
-  const [priorityFilter, setPriorityFilter] = useState('all')
+  const { ticketList, statusFilter, priorityFilter } = useSupportTicketContext()
 
   const filteredTicketList = ticketList.filter(ticket => {    
       const matchedStatus = statusFilter === 'all' || ticket.status.toLowerCase() === statusFilter.toLowerCase()
@@ -18,12 +14,7 @@ export default function AdminDashboard(){
   return (
     <section className="col-center">
       <h1>Admin Dashboard</h1>
-      <FilterControls 
-        statusFilter={statusFilter}
-        priorityFilter={priorityFilter}
-        setPriorityFilter={setPriorityFilter}
-        setStatusFilter={setStatusFilter}
-      />
+      <FilterControls />
       <TicketList filteredTicketList={filteredTicketList} />
     </section>
   )

@@ -1,4 +1,8 @@
-export default function FilterControls({ statusFilter, priorityFilter, setPriorityFilter, setStatusFilter }){
+import { useSupportTicketContext } from "../context/TicketContext"
+
+export default function FilterControls(){
+  const { statusFilter, priorityFilter, setFilter } = useSupportTicketContext()
+  
   const filters = [
     {
       name: 'status',
@@ -21,11 +25,6 @@ export default function FilterControls({ statusFilter, priorityFilter, setPriori
       ]
     }
   ]
-
-  function setFilter(name, value){
-    if(name === "status") setStatusFilter(value)
-    if(name === "priority") setPriorityFilter(value)
-  }
   return (
     <div className="">
       {
